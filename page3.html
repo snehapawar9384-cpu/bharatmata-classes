@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fee Payment</title>
+    <style>
+        body{
+    font-family: Arial, sans-serif;
+    margin:0;
+    padding:20px;
+    background:#f4f7fc;
+    text-align:center;
+}
+        h2{
+    background:linear-gradient(135deg,#0f9d58,#1e88e5);
+    color:white;
+    padding:20px;
+    border-radius:15px;
+}
+       .qr-container{
+    background:white;
+    padding:20px;
+    border-radius:15px;
+    box-shadow:0 0 15px rgba(0,0,0,0.15);
+}
+        .qr-image {
+            width: 280px; 
+            height: auto;
+            display: block;
+            border-radius: 5px;
+        }
+        .instruction {
+            font-size: 16px;
+            margin: 20px 0;
+            color: #333;
+        }
+        .contact-info {
+            font-size: 16px;
+            margin-bottom: 30px;
+            color: #555;
+        }
+        .footer-buttons {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 320px; 
+            margin: 0 auto;
+        }
+        .btn {
+            padding: 10px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            color: white;
+            text-decoration: none;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .btn-back {
+            background-color: #707b7c;
+        }
+        .btn-submit{
+    background:#0f9d58;
+}
+        .google-link {
+            color: blue;
+            text-decoration: underline;
+            font-size: 14px;
+            margin-top: 50px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Scan and Pay Fee Instantly</h2>
+
+    <div class="qr-container">
+     <img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=upi://pay?pa=snehapawar9384@okaxis%26pn=Sneha%20Pawar%26am=250%26cu=INR" alt="UPI QR Code" class="qr-image">  
+    
+
+    </div>
+<div style="margin-top:20px;">
+    <label><b>Upload Payment Screenshot</b></label><br><br>
+
+    <input type="file"
+           id="paymentProof"
+           accept="image/*"
+           required>
+</div>
+    <p class="instruction">
+        After completing the payment, please click the 'Submit-button'.
+    </p>
+
+    <div class="contact-info">
+        If you face any difficulty during payment,<br>
+        contact: [8530045120]
+    </div>
+
+    <div class="footer-buttons">
+        <a href="page2.html" class="btn btn-back">Back</a>
+        <button class="btn btn-submit" onclick="submitDone()">Submit</button>
+    </div>
+
+    <br>
+
+    <script>
+        
+async function submitDone() {
+ alert("Submit button clicked");
+
+    const screenshot =
+    document.getElementById("paymentProof").files.length;
+
+    if(screenshot === 0){
+        alert("Please upload payment screenshot first.");
+        return;
+    }
+
+    const formData = new FormData();
+
+    formData.append(
+      "full_name",
+      localStorage.getItem("full_name")
+    );
+
+    formData.append(
+      "whatsapp_no",
+      localStorage.getItem("whatsapp_no")
+    );
+
+    formData.append(
+      "address",
+      localStorage.getItem("address")
+    );
+
+    formData.append(
+      "dob",
+      localStorage.getItem("dob")
+    );
+    formData.append(
+  "guardian_name",
+  localStorage.getItem("guardian_name")
+);
+
+formData.append(
+  "guardian_mobile",
+  localStorage.getItem("guardian_mobile")
+);
+
+formData.append(
+  "subjects",
+  localStorage.getItem("subjects")
+);
+
+ await fetch(
+   "https://script.google.com/macros/s/AKfycbzVuz7EHoEHdeMlRuns_-ITffHSitr9On_GMhBDJ_JlW16wXdabrnOQvK43hLR6X6GR/exec",
+  {
+    method: "POST",
+    body: formData
+  }
+);
+
+    alert("Admission Submitted Successfully!");
+
+    localStorage.clear();
+
+    window.location.href="success.html";
+}
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Student Search</title>
+
+<style>
+body{
+    font-family:Arial,sans-serif;
+    background:#f4f7fc;
+    text-align:center;
+    padding:30px;
+}
+
+.box{
+    max-width:600px;
+    margin:auto;
+    background:white;
+    padding:25px;
+    border-radius:15px;
+    box-shadow:0 0 15px rgba(0,0,0,0.15);
+}
+
+input{
+    width:90%;
+    padding:12px;
+    margin:10px 0;
+    border:1px solid #ccc;
+    border-radius:8px;
+}
+
+button{
+    background:#0f9d58;
+    color:white;
+    border:none;
+    padding:12px 25px;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+#result{
+    margin-top:20px;
+    font-size:18px;
+    font-weight:bold;
+}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+
+<h2>🔍 Student Search</h2>
+
+<input
+type="text"
+id="mobile"
+placeholder="Enter Mobile Number">
+
+<br>
+
+<button onclick="searchStudent()">
+Search
+</button>
+
+<div id="result"></div>
+
+</div>
+
+<script>
+
+
+async function searchStudent(){
+
+let mobile =
+document.getElementById("mobile").value;
+
+let response = await fetch(
+"https://script.google.com/macros/s/AKfycbzVuz7EHoEHdeMlRuns_-ITffHSitr9On_GMhBDJ_JlW16wXdabrnOQvK43hLR6X6GR/exec?mobile=" + mobile
+);
+
+let data = await response.json();
+
+document.getElementById("result").innerHTML =
+
+`
+<b>Admission ID:</b> ${data.admissionId}<br><br>
+
+<b>Name:</b> ${data.name}<br><br>
+
+<b>Mobile:</b> ${data.mobile}<br><br>
+
+<b>Address:</b> ${data.address}<br><br>
+
+<b>Subjects:</b> ${data.subjects}
+`;
+
+}
+
+</script>
+
+</body>
+</html>
