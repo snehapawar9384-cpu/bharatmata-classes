@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bharatmata Classes - Admission Form</title>
+    <style>
+        body {
+        
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background: #f4f7fc;
+    color: #333;
+}
+        
+
+      .header {
+    position:relative;
+ text-align: center;
+    background: linear-gradient(135deg,#0f9d58,#1e88e5);
+    color: white;
+    padding: 25px;
+    border-radius: 15px;
+    margin-bottom: 30px;
+} 
+
+        .header h3, .header p {
+            margin: 5px 0;
+            font-weight: normal;
+        }
+
+        .info-section, .subject-section {
+            margin-bottom: 20px;
+        }
+
+        .info-section label, .subject-section label {
+            display: inline-block;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        .info-section input[type="text"], .info-section input[type="date"] {
+            margin-left: 10px;
+            padding: 3px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            font-size: 14px;
+        }
+
+        input[type="text"],
+input[type="date"]{
+    width:100%;
+    padding:10px;
+    margin-top:5px;
+    margin-bottom:15px;
+    border-radius:8px;
+    border:1px solid #ccc;
+    box-sizing:border-box;
+}
+
+        .instruction-text {
+            color: blue;
+            font-size: 14px;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .subject-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            font-size: 14px;
+        }
+
+        .subject-list li {
+            margin-bottom: 5px;
+        }
+
+        .subject-list input[type="checkbox"] {
+            margin-right: 5px;
+            vertical-align: middle;
+        }
+
+        .next-btn {
+    background:#0f9d58;
+    color:white;
+    padding:12px 30px;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:16px;
+    display:block;
+    margin:auto;
+}
+
+.next-btn:hover{
+    background:#0b7d46;
+}
+        form{
+    max-width:900px;
+    margin:auto;
+    background:white;
+    padding:25px;
+    border-radius:15px;
+    box-shadow:0 0 15px rgba(0,0,0,0.15);
+}
+.whatsapp{
+    position:fixed;
+    right:20px;
+    bottom:20px;
+    background:#25D366;
+    color:white;
+    padding:15px;
+    border-radius:50px;
+    text-decoration:none;
+    font-weight:bold;
+}
+.sidebar{
+    position:fixed;
+    left:-220px;
+    top:0;
+    width:220px;
+    height:100%;
+    background:#0f9d58;
+    padding-top:20px;
+}
+
+.sidebar h2{
+    color:white;
+    text-align:center;
+}
+
+.sidebar a{
+    display:block;
+    color:white;
+    text-decoration:none;
+    padding:15px;
+    font-size:18px;
+    border-radius:8px;
+    margin:5px 10px;
+}
+
+.sidebar a:hover{
+    background:#0b7d46;
+}
+.menu-btn{
+    position:absolute;
+    top:15px;
+    left:15px;
+    font-size:35px;
+    background:none;
+    border:none;
+    color:white;
+    cursor:pointer;
+
+}
+
+.sidebar{
+    transition:0.3s;
+}
+
+    </style>
+</head>
+<body>
+    
+<div class="sidebar">
+    <h2>BMC Services</h2>
+
+    <a href="index.html">📝 Online Admission</a>
+    <a href="search.html">🔍 Student Search</a>
+    <a href="admin.html">📊 Dashboard</a>
+
+   <a href="#" onclick="toggleServices()">
+        📚 Student Services ▼
+    </a>
+
+    <div id="servicesMenu" style="display:none;">
+
+        <a href="index.html">
+            📄 Online Admission Form
+        </a>
+
+        <a href="receipt.html">
+            🧾 Fee Receipt
+        </a>
+
+    </div>
+</div>
+
+    
+    <div class="header">
+        <button class="menu-btn" onclick="toggleSidebar()">
+☰
+</button>
+
+        <h3>BHARATMATA CLASSES, VADUTH</h3>
+        <p>(Semi/Marathi Medium)</p>
+        <h3>ADMISSION FORM</h3>
+    </div>
+
+    <div class="instruction-text">* Details of Information regarding to me are given below</div>
+
+   <form id="admissionForm">
+        <div class="info-section">
+            <label>Enter your Full Name:</label>
+            <input type="text" name="full_name" required><br>
+
+            <label>Enter your Whatsapp No.:</label>
+            <input type="text" name="whatsapp_no" required><br>
+
+            <label>Enter your Address:</label>
+            <input type="text" name="address" required><br>
+
+            <label>Enter your DOB:</label>
+            <input type="date" name="dob" required><br>
+
+            <label>Enter your Name of guardian:</label>
+            <input type="text" name="guardian_name" required><br>
+
+            <label>Enter your Mobile No of guardian:</label>
+            <input type="text" name="guardian_mobile" required>
+        </div>
+
+        <div class="instruction-text">* I desire following subjects</div>
+
+        <div class="subject-section">
+            <ul class="subject-list">
+                <li><input type="checkbox" name="subjects" value="English"> English</li>
+                <li><input type="checkbox" name="subjects" value="Maths1"> Maths1</li>
+                <li><input type="checkbox" name="subjects" value="Maths2"> Maths2</li>
+                <li><input type="checkbox" name="subjects" value="Science1"> Science1</li>
+                <li><input type="checkbox" name="subjects" value="Science2"> Science2</li>
+                <li><input type="checkbox" name="subjects" value="Scholarship for VIII"> Scholarship for VIII</li>
+            </ul>
+        </div>
+
+        <button type="button" class="next-btn" onclick="goNext()">Next</button>
+    </form>
+   <script>
+function goNext() {
+
+    localStorage.setItem(
+        "full_name",
+        document.querySelector('[name="full_name"]').value
+    );
+
+    localStorage.setItem(
+        "whatsapp_no",
+        document.querySelector('[name="whatsapp_no"]').value
+    );
+
+    localStorage.setItem(
+        "address",
+        document.querySelector('[name="address"]').value
+    );
+
+    localStorage.setItem(
+        "dob",
+        document.querySelector('[name="dob"]').value
+    );
+
+    localStorage.setItem(
+        "guardian_name",
+        document.querySelector('[name="guardian_name"]').value
+    );
+
+    localStorage.setItem(
+        "guardian_mobile",
+        document.querySelector('[name="guardian_mobile"]').value
+    );
+const subjects = [];
+
+document.querySelectorAll('input[name="subjects"]:checked')
+.forEach((item) => {
+    subjects.push(item.value);
+});
+
+localStorage.setItem(
+    "subjects",
+    subjects.join(", ")
+);
+    window.location.href = "page2.html";
+}
+</script>
+<a href="https://wa.me/918530045120" class="whatsapp">
+    WhatsApp
+</a>
+<script>
+
+function toggleSidebar(){
+
+    const sidebar =
+    document.querySelector(".sidebar");
+
+    if(sidebar.style.left === "-220px"){
+
+        sidebar.style.left = "0";
+
+    }else{
+
+        sidebar.style.left = "-220px";
+
+    }
+}
+
+
+function toggleServices(){
+
+    let menu =
+    document.getElementById("servicesMenu");
+
+    if(menu.style.display === "block"){
+
+        menu.style.display = "none";
+
+    }else{
+
+        menu.style.display = "block";
+
+    }
+}
+
+
+</script>
+</body>
+</html>

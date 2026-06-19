@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fee Receipt</title>
+
+<style>
+body{
+    font-family:Arial,sans-serif;
+    background:#f4f7fc;
+    text-align:center;
+    padding:30px;
+}
+
+.box{
+    max-width:700px;
+    margin:auto;
+    background:white;
+    padding:25px;
+    border-radius:15px;
+    box-shadow:0 0 15px rgba(0,0,0,0.15);
+}
+
+input{
+    width:90%;
+    padding:12px;
+    margin:10px 0;
+    border:1px solid #ccc;
+    border-radius:8px;
+}
+
+button{
+    background:#0f9d58;
+    color:white;
+    border:none;
+    padding:12px 25px;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+#receipt{
+    margin-top:20px;
+    text-align:left;
+    padding:20px;
+    border:1px solid #ddd;
+    border-radius:10px;
+}
+
+.print-btn{
+    margin-top:20px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+
+<h2>🧾 Fee Receipt</h2>
+
+<input
+type="text"
+id="mobile"
+placeholder="Enter Mobile Number">
+
+<br>
+
+<button onclick="getReceipt()">
+Get Receipt
+</button>
+
+<div id="receipt"></div>
+
+</div>
+
+<script>
+
+async function getReceipt(){
+
+let mobile =
+document.getElementById("mobile").value;
+
+let response = await fetch(
+"https://script.google.com/macros/s/AKfycbzVuz7EHoEHdeMlRuns_-ITffHSitr9On_GMhBDJ_JlW16wXdabrnOQvK43hLR6X6GR/exec?mobile=" + mobile
+);
+
+let data = await response.json();
+
+document.getElementById("receipt").innerHTML = `
+
+<h3>Bharatmata Classes, Vaduth</h3>
+
+<p><b>Admission ID:</b> ${data.admissionId}</p>
+
+<p><b>Name:</b> ${data.name}</p>
+
+<p><b>Mobile:</b> ${data.mobile}</p>
+
+<p><b>Address:</b> ${data.address}</p>
+
+<p><b>Subjects:</b> ${data.subjects}</p>
+
+<p><b>Fee Status:</b> ${data.payment}</p>
+
+<button class="print-btn" onclick="window.print()">
+Print Receipt
+</button>
+
+`;
+
+}
+
+</script>
+
+</body>
+</html>

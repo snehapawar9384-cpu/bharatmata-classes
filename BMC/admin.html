@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Admin Dashboard</title>
+
+<style>
+
+body{
+    font-family:Arial,sans-serif;
+    background:#f4f7fc;
+    padding:20px;
+}
+
+h1{
+    text-align:center;
+}
+
+.dashboard{
+    display:flex;
+    gap:20px;
+    justify-content:center;
+    flex-wrap:wrap;
+}
+
+.card{
+    background:white;
+    width:250px;
+    padding:20px;
+    border-radius:15px;
+    box-shadow:0 0 10px rgba(0,0,0,0.15);
+    text-align:center;
+}
+
+.number{
+    font-size:35px;
+    font-weight:bold;
+    color:#0f9d58;
+}
+.sidebar{
+    position:fixed;
+    left:0;
+    top:0;
+    width:220px;
+    height:100%;
+    background:#0f9d58;
+    padding-top:20px;
+}
+
+.sidebar h2{
+    color:white;
+    text-align:center;
+}
+
+.sidebar a{
+    display:block;
+    color:white;
+    text-decoration:none;
+    padding:15px;
+    font-size:18px;
+     border-radius:8px;
+    margin:5px 10px;
+}
+
+.sidebar a:hover{
+    background:#0b7d46;
+}
+
+body{
+    margin-left:240px;
+}
+</style>
+</head>
+
+<body>
+<div class="sidebar">
+    <h2>BMC Admin</h2>
+
+    <a href="index.html">📝 Admission Form</a>
+    <a href="search.html">🔍 Student Search</a>
+    <a href="admin.html">📊 Dashboard</a>
+</div>
+<h1>📊 Admin Dashboard</h1>
+
+<div class="dashboard">
+
+<div class="card">
+<h3>Total Admissions</h3>
+<div class="number">0</div>
+</div>
+
+<div class="card">
+<h3>Total Fees</h3>
+<div class="number">₹0</div>
+</div>
+
+<div class="card">
+<h3>Today's Admissions</h3>
+<div class="number">0</div>
+</div>
+
+</div>
+
+</body>
+</html>
